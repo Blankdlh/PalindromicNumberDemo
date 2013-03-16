@@ -1,4 +1,18 @@
 PalindromicNumberDemo
 =====================
 
-Find all palindromic numbers between 0 and n (0&lt;n&lt;=1,000,000,000).
+用 UITableView 显示 0 到 n (0&lt;n&lt;=1,000,000,000) 之间的所有回文数.
+
+## 实现
+
+刚开始想的比较简单，循环判断 0 到 n 之间的数是否为回文数，但是随着 n 的变大，效率十分低下。Google 后参考 [这里](http://www.cnblogs.com/icescut/archive/2009/11/09/PalindromicNumber.html) 重新实现。
+
+回文数的个数存在一定规律：
+
+1、 回文数的数位每增长2，回文数的个数为原来的10倍。
+
+2、 个位回文数的个数是9。
+
+因此，可以找出从1开始第 n 个回文数。根据规律可以算出第 n 个回文数是几位数，再逐步找到所求的回文数。
+
+
