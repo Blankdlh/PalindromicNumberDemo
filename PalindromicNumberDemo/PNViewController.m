@@ -44,7 +44,7 @@
         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"错误" message:@"输入不能为空" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
         [alertView show];
     }
-    else if ([self.inputNumText.text integerValue] > MAX_NUM || [self.inputNumText.text integerValue] < 0){//验证数字范围
+    else if ([self.inputNumText.text integerValue] > MAX_NUM || [self.inputNumText.text integerValue] < 1){//验证数字范围
         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"错误" message:@"数字范围不正确" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
         [alertView show];
     }

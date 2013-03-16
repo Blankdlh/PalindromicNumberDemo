@@ -81,19 +81,19 @@
 - (NSInteger)findPalindromNumberAtIndex:(NSInteger)index
 {
     
-    NSInteger count = 0;
-    NSInteger number = 9;                        //记录数位上的回文数，从个位开始
-    NSInteger w = 0;                            //记录数位
+    NSInteger count = 0; // 累计回文数个数
+    NSInteger number = 9; //当前数位上的回文数，从个位开始
+    NSInteger digit = 0;      //记录数位
     
-    NSInteger half;                            //保存回文数的左半边的结果
-    NSInteger h = 1;                            //回文数的左半边的起始基数
+    NSInteger leftNum;                            //保存回文数的左半边的结果
+    NSInteger leftMin = 1;                            //回文数的左半边的起始基数
     NSInteger res;                            //结果
     
-    while(true) {
-        if(w > 0 && w%2 == 0) {            //每进两个数位，回文数乘以10
+    while(YES) {
+        if(digit > 0 && digit%2 == 0) {            //每进两个数位，回文数乘以10
             number *= 10;
         }
-        w++;                            //数位加一
+        digit++;                            //数位加一
         if(count + number > index)        //回文数大于查找的回数,跳出
             break;
         
@@ -102,20 +102,20 @@
     
     index -= count;                        //在当前数位上的位置。
     
-    for(int i = 0; i < (w-1) / 2; i++) {    //求回文数的左半边的基数
-        h *= 10;
+    for(int i = 0; i < (digit-1) / 2; i++) {    //求回文数的左半边的基数
+        leftMin *= 10;
     }
     
-    half = h + index;                        //回文数的左半边，如100 + 50 = 150
+    leftNum = leftMin + index;                        //回文数的左半边，如100 + 50 = 150
     
-    res = half;
+    res = leftNum;
     
-    if(w%2 != 0)                            //如果为奇数，则中间那个数不必算入右半边了！
-        half /=10;
+    if(digit%2 != 0)                            //如果为奇数，不考虑中间
+        leftNum /=10;
     
-    while(half != 0) {                        //拼接回文数
-        res = res *10 + half % 10;
-        half /= 10;
+    while(leftNum != 0) {                        //拼接回文数
+        res = res *10 + leftNum % 10;
+        leftNum /= 10;
     }
     
     return res;
